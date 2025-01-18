@@ -15,7 +15,7 @@
                     <div class="block">
                         <div class="title"><strong>Tambah Kamar</strong></div>
                         <div class="block-body">
-                            <form action="" method="Post" enctype="multipart/form-data"
+                            <form action="{{ url('tambah_kamar') }}" method="Post" enctype="multipart/form-data"
                                 class="form-horizontal">
                                 @csrf
                                 <div class="form-group row">
@@ -64,7 +64,7 @@
                                 <div class="line"></div>
                                 <div class="form-group row">
                                     <div class="col-sm-9 ml-auto">
-                                        <button type="submit" value="" class="btn btn-primary">Tambah
+                                        <button type="submit" value="" class="btn btn-primary" >Tambah
                                             Kamar</button>
                                     </div>
                                 </div>

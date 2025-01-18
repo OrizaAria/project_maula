@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 //     })->name('dashboard');
 // });
 
-route::get(uri: '/',action: [AdminController::class,'home']);
-route::get(uri: '/home',action: [AdminController::class,'index'])->name(name: 'home');
-route::get(uri: 'create_kamar',action: [AdminController::class, 'create_kamar']);
+route::get('/',[AdminController::class,'home']);
+route::get('/home',[AdminController::class,'index'])->name(name: 'home');
+route::get('create_kamar',[AdminController::class, 'create_kamar']);
+route::post('/tambah_kamar', [AdminController::class, 'tambah_kamar']);
