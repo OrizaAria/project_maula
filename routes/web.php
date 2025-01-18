@@ -30,3 +30,4 @@ use Illuminate\Support\Facades\Route;
 
 route::get(uri: '/',action: [AdminController::class,'home']);
 route::get(uri: '/home',action: [AdminController::class,'index'])->name(name: 'home');
+route::get(uri: 'create_kamar',action: [AdminController::class, 'create_kamar']);

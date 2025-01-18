@@ -25,4 +25,7 @@ class AdminController extends Controller
     {
         return view('home.index');
     }
+    public function create_kamar() {
+        return view('admin.create_kamar');
+    }
 }
