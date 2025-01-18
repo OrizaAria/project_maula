@@ -30,5 +30,6 @@ use Illuminate\Support\Facades\Route;
 
 route::get('/',[AdminController::class,'home']);
 route::get('/home',[AdminController::class,'index'])->name(name: 'home');
-route::get('create_kamar',[AdminController::class, 'create_kamar']);
+route::get('/create_kamar',[AdminController::class, 'create_kamar']);
 route::post('/tambah_kamar', [AdminController::class, 'tambah_kamar']);
+route::get('/data_kamar', [AdminController::class,'data_kamar']);

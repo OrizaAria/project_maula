@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kamar')->nullable();
             $table->string('gambar')->nullable();
-            $table->string('deskripsi')->nullable();
+            $table->longtext('deskripsi')->nullable();
             $table->string('harga')->nullable();
             $table->string('wifi')->default('ya');
             $table->string('type_kamar')->nullable();

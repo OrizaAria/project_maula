@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Models\Room;
+
 
 class AdminController extends Controller
 {
@@ -48,5 +49,10 @@ class AdminController extends Controller
         }
         $data->save();
         return redirect()->back()->with('success', 'Kamar Berhasil Ditambahkan');
+    }
+
+    public function data_kamar() {
+        $data = Room::all();
+        return view('admin.data_kamar',compact('data'));
     }
 }

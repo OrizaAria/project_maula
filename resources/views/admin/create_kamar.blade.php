@@ -21,35 +21,31 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label"></label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="" class="form-control">
+                                        <input type="text" name="kamar" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label"></label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" name="" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" name="desk" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label"></label>
                                     <div class="col-sm-9">
-                                        <input type="number" name="" class="form-control">
+                                        <input type="number" name="harga" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label"></label>
                                     <div class="col-sm-9">
-                                        <select name="" class="form-control mb-3 mb-3">
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                        </select>
+                                        <input type="text" name="wifi" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 form-control-label"></label>
                                     <div class="col-sm-9">
-                                        <select name="" class="form-control mb-3 mb-3">
+                                        <select name="type" class="form-control mb-3 mb-3">
                                             <option value="yes">Yes</option>
                                             <option value="no">No</option>
                                         </select>
