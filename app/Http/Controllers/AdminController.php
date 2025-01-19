@@ -35,11 +35,12 @@ class AdminController extends Controller
 
     public function tambah_kamar(Request $request) {
         $data = new Room;
+        $data -> id = $request ->id;
         $data -> nama_kamar = $request ->kamar;
         $data -> deskripsi = $request->desk;
         $data -> harga = $request->harga;
-        $data -> wifi = $request->wifi;
         $data -> type_kamar = $request->type;
+        $data -> wifi = $request->wifi;
         $gambar=$request->gambar;
         if($gambar)
         {

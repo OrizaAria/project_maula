@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('gambar')->nullable();
             $table->longtext('deskripsi')->nullable();
             $table->string('harga')->nullable();
-            $table->string('wifi')->default('ya');
             $table->string('type_kamar')->nullable();
+            $table->string('wifi')->default('ya');
             $table->timestamps();
         });
     }
