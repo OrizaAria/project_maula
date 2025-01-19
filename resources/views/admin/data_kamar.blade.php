@@ -101,7 +101,7 @@
                         </td>
 
                             <td>
-                                <a class="btn btn-outline-warning" href="">Update</a>
+                                <a class="btn btn-outline-warning" href="{{url('kamar_update', $data->id)}}">Update</a>
                             </td>
                     </tr>
                     @endforeach

@@ -56,4 +56,29 @@ class AdminController extends Controller
         $data = Room::all();
         return view('admin.data_kamar',compact('data'));
     }
+
+    public function kamar_update($id) {
+        $data = Room::find($id);
+        return view('admin.update_kamar',compact('data'));
+    }
+
+    public function edit_kamar (Request $request, $id)
+    {
+        $data = Room::find($id);
+        $data -> nama_kamar = $request ->kamar;
+        $data -> deskripsi = $request->desk;
+        $data -> harga = $request->harga;
+        $data -> type_kamar = $request->type;
+        $data -> wifi = $request->wifi;
+        $gambar = $request->gambar;
+
+        if($gambar)
+        {
+            $gambarnama=time().'.'.$gambar->getClientOriginalExtension();
+            $request->gambar->move('room',$gambarnama);
+            $data -> gambar = $gambarnama;
+        }
+        $data->save();
+        return redirect('data_kamar')->with('success', 'Kamar Berhasil Di Update');
+    }
 }
