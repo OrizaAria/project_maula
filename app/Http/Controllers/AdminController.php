@@ -24,11 +24,13 @@ class AdminController extends Controller
         }
     }
 
-    public function home()
-    {
-        return view('home.index');
-    }
+    public function home () {
+        $room = Room::all();
 
+    {
+        return view('home.index', compact('room'));
+        }
+    }
     public function create_kamar() {
         return view('admin.create_kamar');
     }
