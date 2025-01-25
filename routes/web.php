@@ -41,3 +41,4 @@ route::get('/kamar_delete/{id}', [AdminController::class, 'kamar_delete']);
 route::get('/room_detail/{id}', [HomeController::class, 'room_detail']);
 route::post('/tambah_booking/{id}', [HomeController::class, 'tambah_booking']);
 route::get('/booking', [AdminController::class, 'booking']);
+route::get('/delete_booking/{id}', [AdminController::class, 'delete_booking']);

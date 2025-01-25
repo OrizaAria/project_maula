@@ -54,6 +54,7 @@
                                 <th scope="col">Nama Kamar</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Gambar</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,6 +71,11 @@
                                     <td>{{ $data->room->harga }}</td>
                                     <td>
                                         <img src="room/{{ $data->room->gambar }}" alt="" width="100">
+                                    </td>
+                                    <td>
+                                        <a onclick="return confirm('Apakah Anda Ingin Menghapus Booking?')"
+                                            class="btn btn-outline-danger"
+                                            href="{{ url('delete_booking', $data->id) }}">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
