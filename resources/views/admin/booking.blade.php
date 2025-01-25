@@ -6,6 +6,9 @@
     <style>
         th {
             color: rgb(255, 255, 255);
+            text-align: center;
+            vertical-align: middle;
+            vertical-align: middle;
         }
 
         .description-container {
