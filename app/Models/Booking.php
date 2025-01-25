@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
-     protected $fillable = [
+    protected $fillable = [
         'id_kamar',
         'nama',
         'email',
@@ -16,4 +16,9 @@ class Booking extends Model
         'tanggal_masuk',
         'tanggal_keluar',
     ];
+
+    public function room()
+    {
+        return $this->hasOne('App\Models\Room', 'id', 'id_kamar');
+    }
 }

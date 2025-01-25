@@ -51,6 +51,9 @@
                                 <th scope="col">Tanggal Masuk</th>
                                 <th scope="col">Tanggal Keluar</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Nama Kamar</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Gambar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,6 +66,11 @@
                                     <td>{{ $data->tanggal_masuk }}</td>
                                     <td>{{ $data->tanggal_keluar }}</td>
                                     <td>{{ $data->status }}</td>
+                                    <td>{{ $data->room->nama_kamar }}</td>
+                                    <td>{{ $data->room->harga }}</td>
+                                    <td>
+                                        <img src="room/{{ $data->room->gambar }}" alt="" width="100">
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
