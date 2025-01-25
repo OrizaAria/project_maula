@@ -9,12 +9,14 @@ use App\Models\Room;
 class HomeController extends Controller
 {
 
-    public function room_detail($id) {
+    public function room_detail($id)
+    {
         $room = Room::find($id);
         return view('home.room_detail', compact('room'));
     }
 
-    public function tambah_booking(Request $request, $id) {
+    public function tambah_booking(Request $request, $id)
+    {
         $request->validate([
             'TanggalMasuk' => 'required|date',
             'TanggalKeluar' => 'date|after:TanggalMasuk',
@@ -24,10 +26,20 @@ class HomeController extends Controller
         $data->nama = $request->nama;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->tanggal_masuk = $request->TanggalMasuk;
-        $data->tanggal_keluar = $request->TanggalKeluar;
-        $data->save();
-        return redirect()->back();
 
+        $TanggalMasuk = $request->TanggalMasuk;
+        $TanggalKeluar = $request->TanggalKeluar;
+        $isBooked = Booking::where('id_kamar', $id)
+            ->where('tanggal_masuk', '<=', $TanggalKeluar)
+            ->where('tanggal_keluar', '>=', $TanggalMasuk)->exists();
+
+        if ($isBooked) {
+            return redirect()->back()->with('massage', 'Kamar Sudah Di Booking! cobalah tanggal lain');
+        } else {
+            $data->tanggal_masuk = $request->TanggalMasuk;
+            $data->tanggal_keluar = $request->TanggalKeluar;
+        }
+        $data->save();
+        return redirect()->back()->with('massage', 'Kamar Berhasil Di Booking!');
     }
 }
