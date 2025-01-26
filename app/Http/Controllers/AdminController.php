@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
@@ -125,6 +126,35 @@ class AdminController extends Controller
         $booking = Booking::find($id);
         $booking->status = 'Ditolak';
         $booking->save();
+
+        return redirect()->back();
+    }
+
+    public function view_gallery()
+    {
+        $gallery = Gallery::all();
+
+        return view('admin.gallery', compact('gallery'));
+    }
+
+    public function upload_gallery(Request $request)
+    {
+        $data = new Gallery;
+        $gambar = $request->gambar;
+        if ($gambar) {
+            $gambarnama = time() . '.' . $gambar->getClientOriginalExtension();
+            $request->gambar->move('gallery', $gambarnama);
+            $data->gambar = $gambarnama;
+            $data->save();
+
+            return redirect()->back();
+        }
+    }
+
+    public function delete_gallery($id)
+    {
+        $data = Gallery::find($id);
+        $data->delete();
 
         return redirect()->back();
     }

@@ -44,3 +44,7 @@ route::get('/booking', [AdminController::class, 'booking']);
 route::get('/delete_booking/{id}', [AdminController::class, 'delete_booking']);
 route::get('/terima_booking/{id}', [AdminController::class, 'terima_booking']);
 route::get('/tolak_booking/{id}', [AdminController::class, 'tolak_booking']);
+
+route::get('/view_gallery', [AdminController::class, 'view_gallery']);
+route::post('/upload_gallery', [AdminController::class, 'upload_gallery']);
+route::get('/delete_gallery/{id}', [AdminController::class, 'delete_gallery']);
