@@ -28,6 +28,7 @@ class AdminController extends Controller
     public function home()
     {
         $room = Room::all();
+
         return view('home.index', compact('room'));
     }
     public function create_kamar()
@@ -51,18 +52,21 @@ class AdminController extends Controller
             $data->gambar = $gambarnama;
         }
         $data->save();
+
         return redirect()->back()->with('success', 'Kamar Berhasil Ditambahkan');
     }
 
     public function data_kamar()
     {
         $data = Room::all();
+
         return view('admin.data_kamar', compact('data'));
     }
 
     public function kamar_update($id)
     {
         $data = Room::find($id);
+
         return view('admin.update_kamar', compact('data'));
     }
 
@@ -82,6 +86,7 @@ class AdminController extends Controller
             $data->gambar = $gambarnama;
         }
         $data->save();
+
         return redirect('data_kamar')->with('success', 'Kamar Berhasil Di Update');
     }
 
@@ -89,18 +94,38 @@ class AdminController extends Controller
     {
         $data = Room::find($id);
         $data->delete();
+
         return redirect()->back()->with('success', 'Room Berhasil Dihapus');
     }
 
     public function booking()
     {
         $data = Booking::all();
+
         return view('admin.booking', compact('data'));
     }
     public function delete_booking($id)
     {
         $data = Booking::find($id);
         $data->delete();
+
+        return redirect()->back();
+    }
+
+    public function terima_booking($id)
+    {
+        $booking = Booking::find($id);
+        $booking->status = 'Diterima';
+        $booking->save();
+
+        return redirect()->back();
+    }
+    public function tolak_booking($id)
+    {
+        $booking = Booking::find($id);
+        $booking->status = 'Ditolak';
+        $booking->save();
+
         return redirect()->back();
     }
 }

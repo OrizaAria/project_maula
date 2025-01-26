@@ -34,6 +34,18 @@
         .read-more.active {
             color: red;
         }
+
+        .button-container {
+            display: flex;
+            gap: 200px;
+            width: 100%;
+        }
+
+        .btn {
+            display: block !important;
+            width: 100% !important;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -58,6 +70,7 @@
                                 <th scope="col">Harga</th>
                                 <th scope="col">Gambar</th>
                                 <th scope="col">Delete</th>
+                                <th scope="col">Update Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +82,17 @@
                                     <td>{{ $data->phone }}</td>
                                     <td>{{ $data->tanggal_masuk }}</td>
                                     <td>{{ $data->tanggal_keluar }}</td>
-                                    <td>{{ $data->status }}</td>
+                                    <td>
+                                        @if ($data->status == 'Diterima')
+                                            <span style="color: green">Diterima</span>
+                                        @endif
+                                        @if ($data->status == 'Ditolak')
+                                            <span style="color: red">Ditolak</span>
+                                        @endif
+                                        @if ($data->status == 'menunggu')
+                                            <span style="color: yellow">Menunggu</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $data->room->nama_kamar }}</td>
                                     <td>{{ $data->room->harga }}</td>
                                     <td>
@@ -80,6 +103,13 @@
                                             class="btn btn-outline-danger"
                                             href="{{ url('delete_booking', $data->id) }}">Delete</a>
                                     </td>
+                                    <td>
+                                        <span style="padding-bottom: 10px;">
+                                            <a class="btn btn-outline-success"
+                                                href="{{ url('terima_booking', $data->id) }}">Terima</a>
+                                        </span>
+                                        <a class="btn btn-outline-danger"
+                                            href="{{ url('tolak_booking', $data->id) }}">Tolak</a>
                                 </tr>
                             @endforeach
                         </tbody>
