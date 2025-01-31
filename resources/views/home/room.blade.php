@@ -13,7 +13,7 @@
                 @foreach ($room as $kamar)
                     <div class="col-md-4 col-sm-6">
                         <div id="ser_hover" class="room">
-                            <div class="room_img">
+                            <div style="padding-left: 50px; padding-top: 20px;" class="room_img">
                                 <figure><img style="height: 200px; width: 320px" src="room/{{ $kamar->gambar }}"
                                         alt="#" /></figure>
                             </div>
@@ -21,8 +21,14 @@
                                 <h3>{{ $kamar->nama_kamar }}</h3>
                                 <p style="padding: 10px">{{ Str::limit($kamar->deskripsi, 100) }}</p>
                             </div>
-                            <a class="btn btn-outline-info" href="{{ url('room_detail', $kamar->id) }}">Detail Room</a>
+                            <div style="padding-bottom: 30px;" class="button">
+                                <a class="btn btn-outline-info" href="{{ url('room_detail', $kamar->id) }}">Detail
+                                    Room</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </div>
 </section>

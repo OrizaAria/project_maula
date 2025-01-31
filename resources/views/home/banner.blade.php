@@ -1,4 +1,4 @@
-<section class="banner_main">
+<section class="banner_main" id="banner">
     <div id="myCarousel" class="carousel slide banner" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

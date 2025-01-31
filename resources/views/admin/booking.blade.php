@@ -58,7 +58,7 @@
                 <div class="container-fluid">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr style="text-align: center">
                                 <th scope="col">ID Kamar</th>
                                 <th scope="col">Nama Pemesan</th>
                                 <th scope="col">Email</th>
@@ -75,7 +75,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $data)
-                                <tr>
+                                <tr style="text-align: center">
                                     <td>{{ $data->id_kamar }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->email }}</td>
@@ -104,7 +104,7 @@
                                             href="{{ url('delete_booking', $data->id) }}">Delete</a>
                                     </td>
                                     <td>
-                                        <span style="padding-bottom: 10px;">
+                                        <span style="padding-bottom: 10px; display:flex;">
                                             <a class="btn btn-outline-success"
                                                 href="{{ url('terima_booking', $data->id) }}">Terima</a>
                                         </span>

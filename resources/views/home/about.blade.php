@@ -11,7 +11,7 @@
                             designs. Use our generator to get your own, or read on for the authoritative history of
                             lorem ipsum. </p>
                         <a class="read_more" href="Javascript:void(0)"> Read More</a>
-                        <a class="read_more" href="Javascript:void(0)"> Back</a>
+                        <a class="read_more" href="#banner"> Back</a>
                     </div>
                 </div>
                 <div class="col-md-7">

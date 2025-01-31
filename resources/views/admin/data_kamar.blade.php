@@ -9,58 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <style>
-        th {
-            color: rgb(255, 255, 255);
-        }
-
-        .description-container {
-            position: relative;
-        }
-
         .description-summary {
-            display: block;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
-        .description-text {
-            display: none;
-            /* Sembunyikan teks lengkap secara default */
+        .full-description {
+            font-size: 14px;
+            margin-top: 10px;
         }
 
         .read-more {
-            display: block;
-            color: rgb(205, 205, 216);
+            color: #007BFF;
             cursor: pointer;
             text-decoration: underline;
         }
-
-        .read-more.active {
-            color: red;
-        }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var readMoreLinks = document.querySelectorAll('.read-more');
-
-            readMoreLinks.forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var container = this.parentElement;
-                    var text = container.querySelector('.description-text');
-                    var summary = container.querySelector('.description-summary');
-
-                    if (text.style.display === 'none') {
-                        text.style.display = 'block';
-                        summary.style.display = 'none';
-                        this.textContent = 'Read Less';
-                    } else {
-                        text.style.display = 'none';
-                        summary.style.display = 'block';
-                        this.textContent = 'Read More';
-                    }
-                });
-            });
-        });
-    </script>
     @include('admin.css')
 </head>
 
@@ -80,7 +44,7 @@
                     @endif
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr style="text-align: center">
                                 <th scope="col">Nama Kamar</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Harga</th>
@@ -93,14 +57,16 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $data)
-                                <tr>
+                                <tr style="text-align: center">
                                     <td>{{ $data->nama_kamar }}</td>
                                     <td>
                                         <div class="description-container">
-                                            <p class="description=text">{{ $data->deskripsi }}</p>
-                                            <p class="description-summary">{{ Str::limit($data->deskripsi, 100) }}</p>
+                                            <p class="description-summary">{{ Str::limit($data->deskripsi, 50) }}</p>
+                                            <p class="full-description" style="display: none;">{{ $data->deskripsi }}
+                                            </p>
                                             <a href="#" class="read-more">Read More</a>
                                         </div>
+
                                     </td>
                                     <td>{{ $data->harga }}</td>
                                     <td>{{ $data->type_kamar }}</td>
@@ -126,6 +92,38 @@
     @include('admin.footer')
     <!-- JavaScript files-->
     @include('admin.js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Tunggu sampai DOM siap
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua tombol dengan kelas 'read-more'
+            const readMoreLinks = document.querySelectorAll('.read-more');
+
+            // Iterasi untuk menambahkan event listener pada setiap tombol
+            readMoreLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Mencegah aksi default pada link
+
+                    // Temukan container untuk tiap tombol (setiap record)
+                    const container = this.closest('.description-container');
+                    const fullDescription = container.querySelector('.full-description');
+                    const summary = container.querySelector('.description-summary');
+
+                    // Toggle visibility dan update teks tombol
+                    if (fullDescription.style.display === 'none') {
+                        fullDescription.style.display = 'block'; // Tampilkan deskripsi lengkap
+                        summary.style.display = 'none'; // Sembunyikan ringkasan
+                        this.textContent = 'Read Less'; // Ubah teks tombol
+                    } else {
+                        fullDescription.style.display = 'none'; // Sembunyikan deskripsi lengkap
+                        summary.style.display = 'block'; // Tampilkan ringkasan
+                        this.textContent = 'Read More'; // Ubah teks tombol kembali
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

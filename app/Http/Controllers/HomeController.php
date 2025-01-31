@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models\Room;
 
@@ -41,5 +42,16 @@ class HomeController extends Controller
         }
         $data->save();
         return redirect()->back()->with('massage', 'Kamar Berhasil Di Booking!');
+    }
+    public function contact(Request $request)
+    {
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->massage = $request->massage;
+
+        $contact->save();
+        return redirect()->back()->with('message', 'Pesan Telah Disampaikan!');
     }
 }

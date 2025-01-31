@@ -6,3 +6,4 @@
 <script src="{{ asset('admin/vendor/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('admin/js/charts-home.js') }}"></script>
 <script src="{{ asset('admin/js/front.js') }}"></script>
+<script src="{{ asset('admin/js/boxicon.js') }}"></script>

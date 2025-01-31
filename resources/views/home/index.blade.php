@@ -4,6 +4,8 @@
 <head>
     <!-- basic -->
     @include('home.css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <!-- body -->
 
@@ -43,6 +45,16 @@
     <!-- end footer -->
     <!-- Javascript files-->
     @include('home.js')
+    <script type="text/javascript">
+        $(window).scroll(function() {
+            sessionStorage.scrollTop = $(this).scrollTop();
+        });
+        $(document).ready(function() {
+            if (sessionStorage.scrollTop != "undefined") {
+                $(window).scrollTop(sessionStorage.scrollTop);
+            }
+        });
+    </script>
 </body>
 
 </html>

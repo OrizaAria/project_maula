@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Contact;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,12 @@ class AdminController extends Controller
     {
         if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
+
             if ($usertype == 'user') {
                 $room = Room::all();
-                return view('home.index', compact('room'));
+                $gallery = Gallery::all();
+
+                return view('home.index', compact('room', 'gallery'));
             } else if ($usertype == 'admin') {
                 return view('admin.index');
             } else {
@@ -158,5 +162,11 @@ class AdminController extends Controller
         $data->delete();
 
         return redirect()->back();
+    }
+
+    public function pesan()
+    {
+        $data = Contact::all();
+        return view('admin.pesan', compact('data'));
     }
 }

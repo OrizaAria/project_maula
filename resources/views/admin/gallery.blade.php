@@ -22,7 +22,7 @@
                                 <input class="btn btn-outline-primary" type="submit" value="Tambah Gambar">
                             </div>
                         </form>
-                        <h1 style="font-size: 40px; font-weight: bolder; color: white;">
+                        <h1 style="font-size: 40px; font-weight: bolder; color: white; padding: 20px;">
                             Gallery
                         </h1>
                         <div class="row">

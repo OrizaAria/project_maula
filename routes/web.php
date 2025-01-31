@@ -48,3 +48,7 @@ route::get('/tolak_booking/{id}', [AdminController::class, 'tolak_booking']);
 route::get('/view_gallery', [AdminController::class, 'view_gallery']);
 route::post('/upload_gallery', [AdminController::class, 'upload_gallery']);
 route::get('/delete_gallery/{id}', [AdminController::class, 'delete_gallery']);
+
+route::post('/contact', [HomeController::class, 'contact']);
+
+route::get('/pesan', [AdminController::class, 'pesan']);
