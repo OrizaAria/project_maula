@@ -52,3 +52,5 @@ route::get('/delete_gallery/{id}', [AdminController::class, 'delete_gallery']);
 route::post('/contact', [HomeController::class, 'contact']);
 
 route::get('/pesan', [AdminController::class, 'pesan']);
+route::get('/kirim_email/{id}', [AdminController::class, 'kirim_email']);
+route::post('/mail/{id}', [AdminController::class, 'mail']);

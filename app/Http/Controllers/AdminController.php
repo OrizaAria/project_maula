@@ -8,7 +8,8 @@ use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
-
+use App\Notifications\KirimNotifEmail;
+use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
 {
@@ -168,5 +169,27 @@ class AdminController extends Controller
     {
         $data = Contact::all();
         return view('admin.pesan', compact('data'));
+    }
+
+    public function kirim_email($id)
+    {
+        $data = Contact::find($id);
+        return view('admin.kirim_email', compact('data'));
+    }
+
+    public function mail(Request $request, $id)
+    {
+        $data = Contact::find($id);
+        $details = [
+            'greeting' => $request->greeting,
+            'isi' => $request->isi,
+            'action_text' => $request->action_text,
+            'action_url' => $request->action_url,
+            'penutupan' => $request->penutupan,
+        ];
+        Notification::route('mail', 'maulaindap6@gmail.com')->notify(new KirimNotifEmail($details));
+
+
+        return redirect()->back();
     }
 }

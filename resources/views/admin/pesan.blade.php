@@ -38,6 +38,7 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Pesan</th>
+                                <th scope="col">Kirim Email</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,48 +59,52 @@
                                             @else
                                                 <p class="description-summary">{{ $item->massage }}</p>
                                             @endif
-                                        </div>
+                                    <td>
+                                        <a class="btn btn-outline-success"
+                                            href="{{ url('kirim_email', $item->id) }}">Kirim Email</a>
                                     </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
         </div>
-        @include('admin.footer')
-        <!-- JavaScript files-->
-        @include('admin.js')
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Ambil semua tombol dengan kelas 'read-more'
-                const readMoreLinks = document.querySelectorAll('.read-more');
+    </div>
+    @include('admin.footer')
+    <!-- JavaScript files-->
+    @include('admin.js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua tombol dengan kelas 'read-more'
+            const readMoreLinks = document.querySelectorAll('.read-more');
 
-                // Iterasi untuk menambahkan event listener pada setiap tombol
-                readMoreLinks.forEach(function(link) {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault(); // Mencegah aksi default pada link
+            // Iterasi untuk menambahkan event listener pada setiap tombol
+            readMoreLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Mencegah aksi default pada link
 
-                        // Temukan container untuk tiap tombol (setiap record)
-                        const container = this.closest('.description-container');
-                        const fullDescription = container.querySelector('.full-description');
-                        const summary = container.querySelector('.description-summary');
+                    // Temukan container untuk tiap tombol (setiap record)
+                    const container = this.closest('.description-container');
+                    const fullDescription = container.querySelector('.full-description');
+                    const summary = container.querySelector('.description-summary');
 
-                        // Toggle visibility dan update teks tombol
-                        if (fullDescription.style.display === 'none' || fullDescription.style
-                            .display === '') {
-                            fullDescription.style.display = 'block'; // Tampilkan deskripsi lengkap
-                            summary.style.display = 'none'; // Sembunyikan ringkasan
-                            this.textContent = 'Read Less'; // Ubah teks tombol
-                        } else {
-                            fullDescription.style.display = 'none'; // Sembunyikan deskripsi lengkap
-                            summary.style.display = 'block'; // Tampilkan ringkasan
-                            this.textContent = 'Read More'; // Ubah teks tombol kembali
-                        }
-                    });
+                    // Toggle visibility dan update teks tombol
+                    if (fullDescription.style.display === 'none' || fullDescription.style
+                        .display === '') {
+                        fullDescription.style.display = 'block'; // Tampilkan deskripsi lengkap
+                        summary.style.display = 'none'; // Sembunyikan ringkasan
+                        this.textContent = 'Read Less'; // Ubah teks tombol
+                    } else {
+                        fullDescription.style.display = 'none'; // Sembunyikan deskripsi lengkap
+                        summary.style.display = 'block'; // Tampilkan ringkasan
+                        this.textContent = 'Read More'; // Ubah teks tombol kembali
+                    }
                 });
             });
-        </script>
+        });
+    </script>
 
 </body>
 
